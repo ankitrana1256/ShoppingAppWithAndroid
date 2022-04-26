@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">ShoppingApp</string>
+    <string name="register_with_an_account">Register With An Account</string>
+    <string name="already_have_an_account">Already Have an Account?</string>
+    <string name="signup">SignUp</string>
+    <string name="enter_your_email">Enter Your Email :</string>
+    <string name="email">Email</string>
+    <string name="enter_your_password">Enter Your Password :</string>
+    <string name="password">Password</string>
+</resources>

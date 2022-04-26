@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".RegisterActivity"
+    >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="220dp"
+        android:background="@drawable/ic_wave"
+        android:layout_alignParentBottom="true"
+        >
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
+        >
+
+        <TextView
+            android:id="@+id/text_login"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/register_image"
+            android:layout_marginTop="-52dp"
+            android:layout_marginBottom="20dp"
+            android:layout_marginLeft="10dp"
+            android:text="@string/enter_your_email"
+            android:textSize="20dp"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/remail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/text_login"
+            android:layout_marginBottom="20dp"
+            android:background="@drawable/edit_text_border"
+            android:hint="@string/email"
+            android:minHeight="54dp"
+            android:maxHeight="54dp"
+            android:maxLines="1"
+            android:inputType="text"
+            android:padding="10dp"
+            tools:ignore="TextFields"
+            android:importantForAutofill="no" />
+
+        <TextView
+            android:id="@+id/text_password"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/enter_your_password"
+            android:textSize="20dp"
+            android:layout_marginLeft="10dp"
+            android:textStyle="bold"
+            android:layout_below="@id/remail"
+            android:layout_marginBottom="20dp"/>
+
+        <EditText
+            android:id="@+id/rpassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/text_password"
+            android:layout_marginBottom="20dp"
+            android:background="@drawable/edit_text_border"
+            android:hint="@string/password"
+            android:minHeight="54dp"
+            android:maxHeight="54dp"
+            android:maxLines="1"
+            android:inputType="text"
+            android:padding="10dp"
+            tools:ignore="TextFields" />
+
+        <Button
+            android:id="@+id/registerbtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_below="@id/rpassword"
+            android:text="@string/signup"
+            android:backgroundTint="@color/green"
+            android:layout_marginBottom="20dp"/>
+
+        <TextView
+            android:id="@+id/login_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/already_have_an_account"
+            android:layout_below="@id/registerbtn"
+            android:layout_centerInParent="true"
+            />
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="40dp"
+            android:gravity="center"
+            android:text="@string/register_with_an_account"
+            android:textSize="20dp"
+            android:textStyle="bold" />
+
+        <ImageView
+            android:id="@+id/register_image"
+            android:layout_width="match_parent"
+            android:layout_height="400dp"
+            android:layout_below="@id/textView"
+            android:layout_marginTop="-44dp"
+            app:srcCompat="@drawable/register" />
+    </RelativeLayout>
+</RelativeLayout>
