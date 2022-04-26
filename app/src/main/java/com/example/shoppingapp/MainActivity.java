@@ -3,12 +3,15 @@ import static android.content.ContentValues.TAG;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.GridView;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -26,6 +29,7 @@ public class MainActivity extends AppCompatActivity {
     private FirebaseAuth auth;
     private Button logoutbtn;
     private GridView g;
+    private ProgressBar progress;
 
     @Override
     public void onStart() {
@@ -45,6 +49,7 @@ public class MainActivity extends AppCompatActivity {
         auth = FirebaseAuth.getInstance();
         logoutbtn = findViewById(R.id.logout);
         g = findViewById(R.id.productview);
+        progress = findViewById(R.id.progressBar);
         ArrayList<ProductModel> ProductModelArrayList = new ArrayList<ProductModel>();
 //        ProductModelArrayList.add(new ProductModel("Window","https://i.stack.imgur.com/j7tmu.png"));
 //        ProductModelArrayList.add(new ProductModel("window","https://i.stack.imgur.com/j7tmu.png"));
@@ -52,24 +57,33 @@ public class MainActivity extends AppCompatActivity {
 
         ProductAdapter adapter = new ProductAdapter(this, ProductModelArrayList);
         g.setAdapter(adapter);
+        final Boolean[] empty = {true};
         DatabaseReference refernce = FirebaseDatabase.getInstance().getReference().child("Products");
         refernce.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 ProductModelArrayList.clear();
-                for(DataSnapshot dataSnapshot:snapshot.getChildren()){
-                    String value = dataSnapshot.getValue().toString();
-                    String key = dataSnapshot.getKey();
-                    ProductModelArrayList.add(new ProductModel(key,value));
-                    adapter.notifyDataSetChanged();
+                if (empty[0] ==true){
+                    progress.setVisibility(View.VISIBLE);
                 }
+                else{
+                    progress.setVisibility(View.GONE);
+                }
+                    for(DataSnapshot dataSnapshot:snapshot.getChildren()){
+                        String value = dataSnapshot.getValue().toString();
+                        String key = dataSnapshot.getKey();
+                        ProductModelArrayList.add(new ProductModel(key,value));
+                        progress.setVisibility(View.GONE);
+                        adapter.notifyDataSetChanged();
+                        empty[0] = false;
+                    }
+
 
             }
 
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-
             }
         });
 

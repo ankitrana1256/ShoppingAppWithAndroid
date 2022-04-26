@@ -22,17 +22,14 @@ public class ProductAdapter extends ArrayAdapter<ProductModel> {
     @Override
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
         View listitemView = convertView;
-
         if (listitemView == null) {
-            // Layout Inflater inflates each item to be displayed in GridView.
             listitemView = LayoutInflater.from(getContext()).inflate(R.layout.griddesign, parent, false);
         }
         ProductModel courseModel = getItem(position);
         TextView t = listitemView.findViewById(R.id.textView2);
         ImageView y = listitemView.findViewById(R.id.imageView);
         String uri = courseModel.getUrl();
-        Picasso.get().load(uri).into(y);
-
+        Picasso.get().load(uri).resize(480,450).into(y);
         t.setText(courseModel.getName());
         return listitemView;
     }
